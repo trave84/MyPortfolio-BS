@@ -51,7 +51,7 @@ $xl: 1200px;
 
 
  // GLOBALS:
-* {
+ * {
   box-sizing: border-box;
 }
 
@@ -62,7 +62,7 @@ html {
 
 body {
   background-color: #ebebeb;
-   // width: 1vw;
+  // width: 90vw;
   // padding: 0 auto 0 auto ;
 }
 
@@ -75,11 +75,11 @@ body {
 //   border: 2px red solid;
 // }
 
-// MOBILE FIRST:
-.container {
-  width: $sm;
-  margin: 0 auto;
-}
+// MOBILE FIRST APPROACH:
+// .container {
+  // width: $sm;
+  // margin: 0 auto;
+// }
 
 //  ALL CHILDREN RESPONSIVE:
 // .container > * {
@@ -93,6 +93,7 @@ nav {
   background-color: #435058;
   border-radius: 4px;
 
+  
   // display: flex;
   // color: white;
   // font-family: 'Anaheim', sans-serif;
@@ -293,28 +294,30 @@ padding: 1rem;
 }
 
 // PORTFOLIO:
-.portfolio {
+.container-port {
+  //width: 90%;
+  margin: auto 2rem auto 2rem;
   padding: 2rem 4rem;
-
   background-color: #54be90;
   color: white;
 }
 
-.cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
+// .cards {
+//   display: flex;
+//   flex-flow: row wrap;
+//   justify-content: space-between;
+// }
 
 .card {
-  width: 340px;
-  margin: 0 auto 1rem auto;
+  width: 200px;
+  margin-bottom: 1rem;
   padding: 8px;
 
   background-color: white;
   color: black;
 
   cursor: pointer;
+  font-size: 0.75rem;
 }
 
 .card:hover {
@@ -322,27 +325,31 @@ padding: 1rem;
   background-color: black;
 }
 
-.card .preview {
+.card-img-top {
   width: 100%;
   height: auto;
-}
+} 
 
-.card .body {
+.card-body {
   padding: 1rem;
   background-color: #ebebeb;
 }
 
+.card-text {
+  font-size: .5rem ;
+}
+
 // ABOUT ME:
 .about-me {
-  background-color: #232323;
+  background-color: red;
   padding:1rem;
   color: black;
 }
 
 .about-me .columns {
-  // background-color: purple;
+  background-color: purple;
   display: flex;
-  flex-basis: 1;
+  // flex-basis: 1;
   flex-flow: column nowrap;
   justify-content: center;
   // align-content: center;
@@ -350,9 +357,9 @@ padding: 1rem;
   margin-top: 2rem;
 } 
 
-.about-me  .column {
+.about-me .column {
   width: 440px;
-  margin: 0 auto 1rem auto;
+  margin-bottom: 1rem;
   padding: 0.5rem;
   text-align: center;
   background-color: white;
@@ -421,7 +428,6 @@ padding: 1rem;
 
 .form {
   border: green 1px solid; 
-  border-radius: 0%;
   display: flex;
   /* width: 70vw; */
   flex-wrap: wrap;  
