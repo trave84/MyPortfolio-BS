@@ -92,15 +92,15 @@ nav {
   // padding-left: 2rem;
   background-color: #435058;
   border-radius: 4px;
-
-  
-  // display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   // color: white;
   // font-family: 'Anaheim', sans-serif;
   // font-size: 1em;    
 }
 
-// nav .burger-div {
+//   nav .burger-div {
 //   display: inline-block;
 //   padding: 0 0 0.25em;
 //   font-size: 1.8em;
@@ -110,7 +110,25 @@ nav {
 //   display: none; 
 // }
 
-div.logo {
+@include media-breakpoint-up(lg) {
+  nav {
+    flex-direction: row;
+    justify-content: space-around ;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    // flex-grow: 2;
+  }
+
+  nav a {
+    display: flex;
+    // flex-grow: 1;
+  }
+}
+
+.logo {
   width: 2rem;
   height: 2rem;
   padding: 0.75rem;
@@ -120,7 +138,7 @@ div.logo {
 }
 
 nav a {
-  display: block;
+  // display: block;
   // margin-right: 2rem;
   // padding: 0.5rem 0;
   color: white;
@@ -140,12 +158,18 @@ nav a {
   // line-height: 50px;
   // text-align: center;
   // text-decoration: none;
-}
+
 
 // nav a:hover {
 //   background-color: #54be90;
 //   color: black;
 // }
+
+// @include media-breakpoint-up(sm) {
+//     display: flex;
+
+//   }
+}
 
 h1 {
   margin-bottom: 0.5rem;
@@ -215,8 +239,8 @@ h2 {
   // flex-flow: column nowrap;
   // align-content: center;
   // align-content: flex-start;
-  // width:240px;
-  // height:240px;
+  width:300px;
+  height:300px;
   margin: 3rem 2rem;
   padding: 1rem 1rem;
   font-size: 1rem;
@@ -248,6 +272,18 @@ h2 {
   font-weight: 900;
 }
 
+@include media-breakpoint-up(lg) {
+    .promo-column {
+      width: 350px;
+      height: 350px;
+    }
+    .promo circle {
+    }
+
+    .promo h3 {
+
+    }
+  }
 
 // MY SKILLS:
 .skills {
@@ -340,6 +376,8 @@ padding: 1rem;
 .card-text {
   font-size: .5rem ;
 }
+
+
 
 // ABOUT ME:
 .about-me {
