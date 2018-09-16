@@ -1,5 +1,11 @@
 // Your own styles
 
+// @include media-breakpoint-up(sm) {
+  //   .custom-class {
+  //     display: block;
+  //   }
+  // }
+
 // $text-color: #F4A423;
 // $bg-primary: #efefef;
 // $bg-secondary: #fff;
@@ -239,8 +245,8 @@ h2 {
   // flex-flow: column nowrap;
   // align-content: center;
   // align-content: flex-start;
-  width:300px;
-  height:300px;
+  // width:300px;
+  // height:300px;
   margin: 3rem 2rem;
   padding: 1rem 1rem;
   font-size: 1rem;
@@ -272,18 +278,19 @@ h2 {
   font-weight: 900;
 }
 
-@include media-breakpoint-up(lg) {
-    .promo-column {
-      width: 350px;
-      height: 350px;
-    }
-    .promo circle {
-    }
+// @include media-breakpoint-up(lg) {
+//     // .promo-column {
+//     //   width: 250px;
+//     //   height: 250px;
+//     // }
+//     .promo circle {
+//     }
 
-    .promo h3 {
+//     .promo h3 {
 
-    }
-  }
+//     }
+//   }
+
 
 // MY SKILLS:
 .skills {
@@ -377,28 +384,33 @@ padding: 1rem;
   font-size: .5rem ;
 }
 
+// @include media-breakpoint-up(lg) {
+//   .card {
+//     width: 400px;
+//   }
+// }
 
 
 // ABOUT ME:
 .about-me {
-  background-color: red;
+  // background-color: red;
   padding:1rem;
   color: black;
 }
 
 .about-me .columns {
-  background-color: purple;
-  display: flex;
+  // background-color: purple;
+  // display: flex;
   // flex-basis: 1;
-  flex-flow: column nowrap;
-  justify-content: center;
+  // flex-flow: column nowrap;
+  // justify-content: center;
   // align-content: center;
   // align-items: center;
   margin-top: 2rem;
 } 
 
 .about-me .column {
-  width: 440px;
+  // width: 440px;
   margin-bottom: 1rem;
   padding: 0.5rem;
   text-align: center;
@@ -408,7 +420,7 @@ padding: 1rem;
 }
 
 .about-me .img {
-  border: black 2px dotted;
+  // border: black 2px dotted;
   width: 300px;
   // height: auto;
 }
@@ -460,14 +472,14 @@ padding: 1rem;
 
 // MESSAGE FORM:
 .contact {
-  padding: 2rem 6rem 6rem 6rem;
-
+  padding: 2rem 3rem 6rem 3rem;
   background-color: #54be90;
   color: white;
 }
 
 .form {
   border: green 1px solid; 
+  // margin-right: 2rem;
   display: flex;
   /* width: 70vw; */
   flex-wrap: wrap;  
@@ -475,6 +487,7 @@ padding: 1rem;
   align-content: flex-start;
   align-items:stretch;
 }
+
 
 // .form_row1, .form_row2 {
 //   background-color: purple; 
