@@ -45,7 +45,6 @@
 @import "./node_modules/bootstrap/scss/utilities";
 @import "./node_modules/bootstrap/scss/print";
 
-@include responsive-font(5vw, 35px, 150px, 50px);
 // own styles (feel free to add more)
 @import "base";
 
