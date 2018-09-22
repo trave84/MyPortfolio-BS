@@ -1,0 +1,19 @@
+1) Logo
+
+2) Navigation 
+
+3) Images: logo/ banner / about-me
+
+4) Colors: $background, $primary, $secondary , $links active/hover, 
+
+5) Progress bar: 80%, Animtion
+
+6) Portfolio: Card Animtion + See more... Links
+
+7) ABOUT-ME: Responsive (md) (lg): Human Readable
+
+8) FIND ME: LINKS to work
+
+9) CONTACT ME: Human Readable (lg) + Contact Button Text perfect center
+
+10) NICE TO MEET: Margin, Padding, Copyrights, <hr> line
