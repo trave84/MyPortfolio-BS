@@ -1,19 +1,26 @@
-1) Logo
+1) Logo: sized <div > a>
 
-2) Navigation 
+2) Navigation: dropdown (sm,md), sticky (lg)  
 
 3) Images: logo/ banner / about-me
 
 4) Colors: $background, $primary, $secondary , $links active/hover, 
 
-5) Progress bar: 80%, Animtion
+5) Progress bar: text: "80%", CSS-Animations
 
-6) Portfolio: Card Animtion + See more... Links
+6) Portfolio: Cards: CSS-Animations + "See more..." 
 
-7) ABOUT-ME: Responsive (md) (lg): Human Readable
+7) ABOUT-ME: Human Readable (md, lg)
 
-8) FIND ME: LINKS to work
+8) FIND ME: <a href="#"> to work
 
-9) CONTACT ME: Human Readable (lg) + Contact Button Text perfect center
+9) CONTACT ME: Human Readable (lg) + Cont-btn: text- perfect-center
 
-10) NICE TO MEET: Margin, Padding, Copyrights, <hr> line
+10) NICE TO MEET: Mr, Pd, Copyrights, <hr>line
+
+11) SECTION ALL: 
+  body {margin: }
+  container {}
+  section {padding: }
+  
+  
