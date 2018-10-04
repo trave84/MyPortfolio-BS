@@ -272,28 +272,28 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="userFn">First name*</label>
-            <input type="text" class="form-control" id="userFn" placeholder="">
+            <input type="text" name="fn_input" class="form-control" id="userFn" value="<?= isset($_POST['fn_input']) ? htmlspecialchars($_POST['fn_input']) : '' ?>"> placeholder="">
           </div>
           <div class="form-group col-md-6">
             <label for="userLn">Last name*</label>
-            <input type="text" class="form-control" id="userLn" placeholder="">
+            <input type="text" name="ln_input" class="form-control" id="userLn" value="<?= isset($_POST['ln_input']) ? htmlspecialchars($_POST['ln_input']) : '' ?>">placeholder="">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="userMail">E-mail*</label>
-            <input type="email" class="form-control" id="userMail" placeholder="">
+            <input type="email" name="email_input" class="form-control" id="userMail" placeholder="">
           </div>
           <div class="form-group col-md-6">
             <label for="userPhone">Phone*</label>
-            <input type="text" class="form-control" id="userPhone" placeholder="">
+            <input type="text" name="pn_input" class="form-control" id="userPhone" value="<?= isset($_POST['pn_input']) ? htmlspecialchars($_POST['pn_input']) : '' ?>"> placeholder="">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="userMsg">Your message</label>
             <div class="w-100"></div>
-            <textarea class="form-control" id="userMsg" rows="8"></textarea>
+            <textarea class="form-control" name="user_msg_input" id="userMsg" rows="8"><?= isset($_POST['user_msg_input']) ? htmlspecialchars($_POST['user_msg_input']) : '' ?></textarea>
           </div>
         </div>
         <button type="submit" class="btn btn-primary col-md-12">Send your message</button>
