@@ -3,10 +3,7 @@ require_once 'DBBlackbox.php';
 
 session_start();
 
-// if there is item with key id in URL, then this is edit (of that item)
-$is_edit = isset($_GET['id']);
- 
-// we will need some way to keep and present messages for the user
+$is_edit = isset($_GET['id']); 
 $messages = [];
 
 if (!empty($_SESSION['flashed_messages'])) {
@@ -15,7 +12,6 @@ if (!empty($_SESSION['flashed_messages'])) {
 }
  
 if ($is_edit) {
-    // somehow retrieve existing data from database
     $user = array_merge([
             'fn_input' => null,
             'ln_input' => null,
@@ -28,8 +24,6 @@ if ($is_edit) {
     );
 } else {
  
-    // prepare empty data with the same structure as those that
-    // would be retrieved from database
     $user = [
       'fn_input' => null,
       'ln_input' => null,
@@ -39,9 +33,7 @@ if ($is_edit) {
     ];
 }
 
-// if this is a POST request ($_POST is not empty array)
 if ($_POST) {
-    // update data from request
     if (isset($_POST['fn_input'])) {
         $user['fn_input'] = $_POST['fn_input'];
     }
@@ -58,27 +50,22 @@ if ($_POST) {
         $user['pn_input'] = (boolean)$_POST['pn_input'];
     }
  
-    // validate data
-    $valid = true; // we assert that everything is ok
+    $valid = true; 
     if ($user['fn_input'] == '') {
-        // add an error message
         $messages[] = 'First name must be added';
-        $valid = false; // we indicate that not everything is ok
+        $valid = false; 
     }
     if ($user['ln_input'] == '') {
-      // add an error message
       $messages[] = 'Last name must be added';
-      $valid = false; // we indicate that not everything is ok
+      $valid = false; 
     }
     if ($user['email_input'] == '') {
-      // add an error message
       $messages[] = 'Email  must be added';
-      $valid = false; // we indicate that not everything is ok
+      $valid = false; 
     }
     if ($user['pn_input'] == '') {
-      // add an error message
       $messages[] = 'Phone number  must be added';
-      $valid = false; // we indicate that not everything is ok
+      $valid = false; 
     }
     // if ($user['user_msg_input'] == '') {
     //   // add an error message
@@ -86,28 +73,25 @@ if ($_POST) {
     //   $valid = false; // we indicate that not everything is ok
     // } 
   
-    // if validation succeeded
     if ($valid) {
  
-        // somehow save the data into the database
         if ($is_edit) {
             $id = update($_GET['id'], $user);
         } else {
             $id = insert($user);
         }
         
- 
-        // inform the user
-        $messages[] = 'Successfully sent your message. You will be contacted within 48 hours. Thank you!';
 
+        // inform the user !!
+        $messages[] = 'Successfully sent your message. You will be contacted within 48 hours. Thank you!';
         $_SESSION['flashed_messages'] = $messages;
- 
-        // redirect (to edit)!
+        
+        // redirect !!
         header('Location: ?id=' . $id);
     }
 }
 
-var_dump($_POST);
+// var_dump($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -154,7 +138,8 @@ var_dump($_POST);
     <!-- BANNER + TEXT -->
     <section class="banner">
       <h1>Hi, I am <br> <span class="name">Arpad Kajari</span></h1>
-      <div class="whoiam">I'm a Full-stack Web Developer</div>
+      <h2>I'm a <span class="typer" data-wait="3000" data-words='["Full-Stack Web Developer."]'></span></h2>
+      <!-- <div class="whoiam">I'm a Full-stack Web Developer</div> -->
     </section>
 
     <section class="intro">
@@ -441,5 +426,7 @@ var_dump($_POST);
   </div>
   </div>
   <script src="js/main.js"></script>
+  <script src="js/typer.js"></script>
+
 </body>
 </html>

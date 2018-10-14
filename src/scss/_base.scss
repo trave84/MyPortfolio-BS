@@ -155,8 +155,17 @@ h2 {
   text-align: center;
 } 
 
+.typer {
+  border-right: .15rem solid black;
+}
+
 // HERO + INSIDE:
 .banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
   margin-top: 3rem;
   padding: 4rem;
   background: #232323 url('img/banner3.jpg');
