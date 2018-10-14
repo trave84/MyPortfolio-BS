@@ -1,3 +1,115 @@
+<?php
+require_once 'DBBlackbox.php';
+
+session_start();
+
+// if there is item with key id in URL, then this is edit (of that item)
+$is_edit = isset($_GET['id']);
+ 
+// we will need some way to keep and present messages for the user
+$messages = [];
+
+if (!empty($_SESSION['flashed_messages'])) {
+    $messages = $_SESSION['flashed_messages']; 
+    unset($_SESSION['flashed_messages']);
+}
+ 
+if ($is_edit) {
+    // somehow retrieve existing data from database
+    $user = array_merge([
+            'fn_input' => null,
+            'ln_input' => null,
+            'email_input' => null,
+            'pn_input' => null,
+            'msg_input' => null,
+
+        ], 
+        find($_GET['id'])
+    );
+} else {
+ 
+    // prepare empty data with the same structure as those that
+    // would be retrieved from database
+    $user = [
+      'fn_input' => null,
+      'ln_input' => null,
+      'email_input' => null,
+      'pn_input' => null,
+      'user_msg_input' => null
+    ];
+}
+
+// if this is a POST request ($_POST is not empty array)
+if ($_POST) {
+    // update data from request
+    if (isset($_POST['fn_input'])) {
+        $user['fn_input'] = $_POST['fn_input'];
+    }
+
+    if (isset($_POST['ln_input'])) {
+        $user['ln_input'] = $_POST['ln_input'];
+    }
+
+    if (isset($_POST['email_input'])) {
+        $user['email_input'] = $_POST['email_input'];
+    }
+
+    if (isset($_POST['pn_input'])) {
+        $user['pn_input'] = (boolean)$_POST['pn_input'];
+    }
+ 
+    // validate data
+    $valid = true; // we assert that everything is ok
+    if ($user['fn_input'] == '') {
+        // add an error message
+        $messages[] = 'First name must be added';
+        $valid = false; // we indicate that not everything is ok
+    }
+    if ($user['ln_input'] == '') {
+      // add an error message
+      $messages[] = 'Last name must be added';
+      $valid = false; // we indicate that not everything is ok
+    }
+    if ($user['email_input'] == '') {
+      // add an error message
+      $messages[] = 'Email  must be added';
+      $valid = false; // we indicate that not everything is ok
+    }
+    if ($user['pn_input'] == '') {
+      // add an error message
+      $messages[] = 'Phone number  must be added';
+      $valid = false; // we indicate that not everything is ok
+    }
+    // if ($user['user_msg_input'] == '') {
+    //   // add an error message
+    //   $messages[] = 'Message  must be added';
+    //   $valid = false; // we indicate that not everything is ok
+    // } 
+  
+    // if validation succeeded
+    if ($valid) {
+ 
+        // somehow save the data into the database
+        if ($is_edit) {
+            $id = update($_GET['id'], $user);
+        } else {
+            $id = insert($user);
+        }
+        
+ 
+        // inform the user
+        $messages[] = 'Successfully sent your message. You will be contacted within 48 hours. Thank you!';
+
+        $_SESSION['flashed_messages'] = $messages;
+ 
+        // redirect (to edit)!
+        header('Location: ?id=' . $id);
+    }
+}
+
+var_dump($_POST);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +142,7 @@
 
     <nav>
       <a id="logo-link" href="#">
-        <img class="logo-img" src="/img/logo-16px.svg" alt="Logo">
+        <img class="logo-img" src="img/logo-16px.svg" alt="Logo">
       </a>
       <a href="#" title="Homepage">HOME</a>
       <a href="#skills" title="My Skills">SKILLS</a>
@@ -268,15 +380,23 @@
     <section id="contact">
       <h2>CONTACT ME</h2>
 
-      <form>
+      <!-- display messages -->
+      <?php foreach ($messages as $message) : ?>
+          <div class="message">
+              <?php echo $message; ?>
+          </div>
+      <?php endforeach; ?>
+    
+      <form action="" method="post">
+        <!-- display the form prefilled with the current data -->
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="userFn">First name*</label>
-            <input type="text" name="fn_input" class="form-control" id="userFn" value="<?= isset($_POST['fn_input']) ? htmlspecialchars($_POST['fn_input']) : '' ?>"> placeholder="">
+            <input type="text" name="fn_input" class="form-control" id="userFn" value="<?= isset($_POST['fn_input']) ? htmlspecialchars($_POST['fn_input']) : '' ?>" placeholder="">
           </div>
           <div class="form-group col-md-6">
             <label for="userLn">Last name*</label>
-            <input type="text" name="ln_input" class="form-control" id="userLn" value="<?= isset($_POST['ln_input']) ? htmlspecialchars($_POST['ln_input']) : '' ?>">placeholder="">
+            <input type="text" name="ln_input" class="form-control" id="userLn" value="<?= isset($_POST['ln_input']) ? htmlspecialchars($_POST['ln_input']) : '' ?>"placeholder="">
           </div>
         </div>
         <div class="form-row">
@@ -286,7 +406,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="userPhone">Phone*</label>
-            <input type="text" name="pn_input" class="form-control" id="userPhone" value="<?= isset($_POST['pn_input']) ? htmlspecialchars($_POST['pn_input']) : '' ?>"> placeholder="">
+            <input type="text" name="pn_input" class="form-control" id="userPhone" value="<?= isset($_POST['pn_input']) ? htmlspecialchars($_POST['pn_input']) : '' ?>" placeholder="">
           </div>
         </div>
         <div class="form-row">
@@ -296,7 +416,8 @@
             <textarea class="form-control" name="user_msg_input" id="userMsg" rows="8"><?= isset($_POST['user_msg_input']) ? htmlspecialchars($_POST['user_msg_input']) : '' ?></textarea>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary col-md-12">Send your message</button>
+        <input type="submit"  value="Send message">
+        <?php $id = insert($user); ?>
       </form>
     </section> <!-- END OF CONTACT ME  SECTION -->
 
